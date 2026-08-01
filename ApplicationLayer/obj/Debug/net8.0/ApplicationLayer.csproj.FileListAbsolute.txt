@@ -1,0 +1,17 @@
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\ApplicationLayer.deps.json
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\ApplicationLayer.dll
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\ApplicationLayer.pdb
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\DomainLayer.dll
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\InfrastructureLayer.dll
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\DomainLayer.pdb
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\bin\Debug\net8.0\InfrastructureLayer.pdb
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.csproj.AssemblyReference.cache
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.AssemblyInfoInputs.cache
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.AssemblyInfo.cs
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.csproj.CoreCompileInputs.cache
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\Applicat.033E422A.Up2Date
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.dll
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\refint\ApplicationLayer.dll
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.pdb
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ref\ApplicationLayer.dll

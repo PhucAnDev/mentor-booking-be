@@ -1,0 +1,6 @@
+@mentor_booking_be_HostAddress = http://localhost:5047
+
+GET {{mentor_booking_be_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

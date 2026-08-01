@@ -1,0 +1,17 @@
+{
+    "guard-rails": {
+        "enabled": true,
+        "PreToolUse": [
+            {
+                "matcher": ".*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "node \"$(git rev-parse --show-toplevel)/.agents/kit-hooks/guard-rails.mjs\" --platform antigravity",
+                        "timeout": 10
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+D:\do an\pick-det\mentor-booking-be\DomainLayer\bin\Debug\net8.0\DomainLayer.deps.json
+D:\do an\pick-det\mentor-booking-be\DomainLayer\bin\Debug\net8.0\DomainLayer.dll
+D:\do an\pick-det\mentor-booking-be\DomainLayer\bin\Debug\net8.0\DomainLayer.pdb
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.AssemblyInfoInputs.cache
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.AssemblyInfo.cs
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.csproj.CoreCompileInputs.cache
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.dll
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\refint\DomainLayer.dll
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.pdb
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\ref\DomainLayer.dll
+D:\do an\pick-det\mentor-booking-be\DomainLayer\obj\Debug\net8.0\DomainLayer.csproj.AssemblyReference.cache

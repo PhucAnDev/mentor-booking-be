@@ -1,0 +1,18 @@
+# Build output
+**/bin/
+**/obj/
+*.pdb
+*.dll
+*.exe
+*.log
+
+# User/IDE
+.vs/
+*.user
+*.suo
+*.userosscache
+.idea/
+*.sln.docstates
+
+# ASP.NET static web assets cache
+**/staticwebassets*.json
