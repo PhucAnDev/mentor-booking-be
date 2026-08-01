@@ -17,6 +17,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="14.0.0" />
+		<!-- Pinned to override transitive dep with CVE-2026-26127 -->
+		<PackageReference Include="Microsoft.Bcl.Memory" Version="9.0.14" />
 	</ItemGroup>
 
 </Project>
