@@ -14,6 +14,7 @@ namespace ApplicationLayer.DTOs
         public bool IsActive { get; set; }
         public UserDto User { get; set; } = null!;
         public string? EnterpriseName { get; set; }
+        public System.Collections.Generic.List<SlotDto> Slots { get; set; } = new();
     }
 
     public class UpdateMentorProfileDto

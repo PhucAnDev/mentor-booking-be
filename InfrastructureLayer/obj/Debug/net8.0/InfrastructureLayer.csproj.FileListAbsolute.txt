@@ -15,3 +15,4 @@ D:\do an\pick-det\mentor-booking-be\InfrastructureLayer\bin\Debug\net8.0\DomainL
 D:\do an\pick-det\mentor-booking-be\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.csproj.AssemblyReference.cache
 D:\do an\pick-det\mentor-booking-be\InfrastructureLayer\obj\Debug\net8.0\Infrastr.B5BC0072.Up2Date
 D:\do an\pick-det\mentor-booking-be\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.genruntimeconfig.cache
+D:\do an\pick-det\mentor-booking-be\InfrastructureLayer\obj\Debug\net8.0\InfrastructureLayer.sourcelink.json

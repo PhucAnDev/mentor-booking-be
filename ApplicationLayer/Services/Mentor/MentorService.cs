@@ -36,7 +36,7 @@ namespace ApplicationLayer.Services.Mentor
             if (payload == null)
                 return ErrorResp.Unauthorized("Yêu cầu chưa được xác thực.");
 
-            var mentor = await _mentorRepo.FirstOrDefaultAsync(m => m.UserId == payload.UserId, "User", "User.Role", "Enterprise");
+            var mentor = await _mentorRepo.FirstOrDefaultAsync(m => m.UserId == payload.UserId, "User", "User.Role", "Enterprise", "Slots");
             if (mentor == null)
                 return ErrorResp.NotFound("Không tìm thấy thông tin mentor.");
 
@@ -74,20 +74,20 @@ namespace ApplicationLayer.Services.Mentor
         {
             var mentors = await _mentorRepo.WhereAsync(
                 m => m.IsActive && m.User.Status == UserStatusEnum.Active,
-                "User", "User.Role", "Enterprise"
+                "User", "User.Role", "Enterprise", "Slots"
             );
             return SuccessResp.Ok(_mapper.Map<List<MentorProfileDto>>(mentors));
         }
 
         public async Task<IActionResult> ListAllMentors()
         {
-            var mentors = await _mentorRepo.ListAsync("User", "User.Role", "Enterprise");
+            var mentors = await _mentorRepo.ListAsync("User", "User.Role", "Enterprise", "Slots");
             return SuccessResp.Ok(_mapper.Map<List<MentorProfileDto>>(mentors));
         }
 
         public async Task<IActionResult> ToggleActivationStatus(Guid mentorId)
         {
-            var mentor = await _mentorRepo.FirstOrDefaultAsync(m => m.Id == mentorId, "User", "User.Role", "Enterprise");
+            var mentor = await _mentorRepo.FirstOrDefaultAsync(m => m.Id == mentorId, "User", "User.Role", "Enterprise", "Slots");
             if (mentor == null)
                 return ErrorResp.NotFound("Không tìm thấy thông tin mentor.");
 

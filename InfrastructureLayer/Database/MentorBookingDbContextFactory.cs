@@ -17,7 +17,7 @@ namespace InfrastructureLayer.Database
 
             var optionsBuilder = new DbContextOptionsBuilder<MentorBookingDbContext>();
             var connectionString = configuration.GetConnectionString("DefaultConnection");
-            optionsBuilder.UseNpgsql(connectionString);
+            optionsBuilder.UseSqlServer(connectionString);
 
             return new MentorBookingDbContext(optionsBuilder.Options);
         }

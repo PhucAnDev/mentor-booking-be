@@ -63,9 +63,9 @@ builder.Services.AddAuthentication("Bearer")
 
 builder.Services.AddAuthorization();
 
-// DbContext configuration (PostgreSQL)
+// DbContext configuration (MS SQL Server)
 builder.Services.AddDbContext<MentorBookingDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Mapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));

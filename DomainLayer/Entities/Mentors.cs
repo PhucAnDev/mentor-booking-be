@@ -15,5 +15,6 @@ namespace DomainLayer.Entities
         // Navigation
         public Users User { get; set; } = null!;
         public Enterprises? Enterprise { get; set; }
+        public System.Collections.Generic.List<Slots> Slots { get; set; } = new();
     }
 }

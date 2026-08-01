@@ -19,6 +19,10 @@ namespace ApplicationLayer.DTOs
         public string MentorName { get; set; } = null!;
         public string TimeSlot { get; set; } = null!;
         public string DayOfWeek { get; set; } = null!;
+        public string? StudentEmail { get; set; }
+        public int StudentSchoolYear { get; set; }
+        public string? StudentUniversity { get; set; }
+        public string? StudentCvUrl { get; set; }
     }
 
     public class CreateBookingDto

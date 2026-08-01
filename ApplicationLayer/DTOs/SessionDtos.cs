@@ -14,5 +14,8 @@ namespace ApplicationLayer.DTOs
         public string StudentName { get; set; } = null!;
         public string MentorName { get; set; } = null!;
         public string BookingTitle { get; set; } = null!;
+        public string? EnterpriseName { get; set; }
+        public string? SkillTag { get; set; }
+        public bool IsPriority { get; set; }
     }
 }

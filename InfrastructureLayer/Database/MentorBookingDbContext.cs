@@ -88,6 +88,61 @@ namespace InfrastructureLayer.Database
                 Description = "Corporate Partner",
                 Status = RoleStatusEnum.Active,
             });
+
+            // Configure Restrict cascade delete to avoid SQL Server cycles
+            modelBuilder.Entity<Bookings>(b =>
+            {
+                b.HasOne(x => x.Slot)
+                    .WithMany()
+                    .HasForeignKey(x => x.SlotId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                
+                b.HasOne(x => x.Student)
+                    .WithMany()
+                    .HasForeignKey(x => x.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                b.HasOne(x => x.Mentor)
+                    .WithMany()
+                    .HasForeignKey(x => x.MentorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<Sessions>(s =>
+            {
+                s.HasOne(x => x.Booking)
+                    .WithMany()
+                    .HasForeignKey(x => x.BookingId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                s.HasOne(x => x.Student)
+                    .WithMany()
+                    .HasForeignKey(x => x.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                s.HasOne(x => x.Mentor)
+                    .WithMany()
+                    .HasForeignKey(x => x.MentorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<MeetingMinutes>(m =>
+            {
+                m.HasOne(x => x.Session)
+                    .WithMany()
+                    .HasForeignKey(x => x.SessionId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                m.HasOne(x => x.Student)
+                    .WithMany()
+                    .HasForeignKey(x => x.StudentId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                m.HasOne(x => x.Mentor)
+                    .WithMany()
+                    .HasForeignKey(x => x.MentorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
         }
     }
 }
