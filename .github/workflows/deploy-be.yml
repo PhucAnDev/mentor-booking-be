@@ -16,7 +16,7 @@ permissions:
   packages: write  # Required to push to ghcr.io
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/mentor-booking-be
+  IMAGE: ghcr.io/phucandev/mentor-booking-be
   CONTAINER_APP_NAME: ca-mentor-booking-backend
   RESOURCE_GROUP: rg-mentor-booking
 
