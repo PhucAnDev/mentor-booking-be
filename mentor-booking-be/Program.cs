@@ -34,7 +34,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(MyAllowSpecificOrigins, policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "http://localhost:3000") // FE domains
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "http://localhost:3000",
+                "https://ca-mentor-booking-frontend.delightfulcoast-cbd81cee.japaneast.azurecontainerapps.io"
+              )
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
@@ -142,12 +146,10 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-// Pipeline Configuration
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Swagger enabled in all environments for API access
+app.UseSwagger();
+app.UseSwaggerUI();
+
 
 app.UseRouting();
 app.UseCors(MyAllowSpecificOrigins);
