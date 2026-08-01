@@ -1,0 +1,73 @@
+name: Rollback Backend (Incident Remediation)
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [rollback-be]
+
+# Rollback must NEVER be cancelled mid-way — more dangerous than running 2 at once
+concurrency:
+  group: rollback-${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  CONTAINER_APP_NAME: ca-mentor-booking-backend
+  RESOURCE_GROUP: rg-mentor-booking
+
+jobs:
+  rollback:
+    name: 1-Click Rollback
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Log in to Azure via OIDC
+        uses: azure/login@a457da9ea143d694b1b9c7c869ebb04ebe844ef5 # v2.3.0
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Auto-Remediation (Traffic Shift to Previous Stable Revision)
+        run: |
+          echo "🛡️ Finding the last stable active revision..."
+          REVISIONS=$(az containerapp revision list -n ${{ env.CONTAINER_APP_NAME }} -g ${{ env.RESOURCE_GROUP }} -o json)
+
+          # Get the latest ACTIVE revision
+          LATEST_REV=$(az containerapp show -n ${{ env.CONTAINER_APP_NAME }} -g ${{ env.RESOURCE_GROUP }} --query "properties.latestRevisionName" -o tsv)
+
+          # Find the previous active stable revision (not the latest)
+          STABLE_REV=$(echo "$REVISIONS" | jq -r --arg latest "$LATEST_REV" \
+            '[.[] | select(.properties.active == true and .name != $latest)] | sort_by(.properties.createdTime) | reverse | .[0].name')
+
+          if [[ -z "$STABLE_REV" || "$STABLE_REV" == "null" ]]; then
+            echo "❌ Error: No stable previous revision found. Aborting rollback."
+            exit 1
+          fi
+
+          echo "🔀 Shifting 100% traffic back to stable revision: $STABLE_REV"
+          az containerapp ingress traffic set \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --revision-weight "$STABLE_REV=100"
+
+          echo "✅ Rollback complete! System is 100% healthy again."
+
+      - name: Notify Telegram on Success
+        if: success()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d parse_mode="HTML" \
+          -d text="🛡️ <b>Auto-Remediation Successful!</b> 🛡️%0A<b>Repo:</b> ${{ github.repository }}%0A<b>Status:</b> 100% traffic rolled back to stable revision%0A<a href='https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'>View Run</a>"
+
+      - name: Notify Telegram on Failure
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d parse_mode="HTML" \
+          -d text="⚠️ <b>Rollback FAILED!</b> ⚠️%0A<b>Repo:</b> ${{ github.repository }}%0A<b>Status:</b> Could not automatically rollback traffic%0A<a href='https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}'>View Run</a>%0A%0A⚡ Manual intervention required!"

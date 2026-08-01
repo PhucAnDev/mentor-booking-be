@@ -1,0 +1,20 @@
+# .dockerignore for mentor-booking-be
+
+# Build artifacts
+**/bin/
+**/obj/
+
+# VS files
+.vs/
+*.user
+*.suo
+
+# Git
+.git/
+.gitignore
+
+# Workflows
+.github/
+
+# Docs
+*.md
