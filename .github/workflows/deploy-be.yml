@@ -66,6 +66,15 @@ jobs:
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
 
+      - name: Configure ghcr.io registry on Container App
+        run: |
+          az containerapp registry set \
+            --name ${{ env.CONTAINER_APP_NAME }} \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --server ghcr.io \
+            --username ${{ github.actor }} \
+            --password ${{ secrets.GHCR_PAT }}
+
       - name: Deploy to Azure Container Apps (Canary)
         run: |
           echo "Deploying ${{ env.IMAGE }}:${{ github.sha }}"
