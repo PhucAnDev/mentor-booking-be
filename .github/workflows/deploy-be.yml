@@ -82,7 +82,7 @@ jobs:
           az containerapp update \
             --name ${{ env.CONTAINER_APP_NAME }} \
             --resource-group ${{ env.RESOURCE_GROUP }} \
-            --container-name backend \
+            --container-name ca-mentor-booking-backend \
             --image ${{ env.IMAGE }}:${{ github.sha }} \
             --set-env-vars \
               "ConnectionStrings__DefaultConnection=${{ secrets.DB_CONNECTION_STRING }}" \
