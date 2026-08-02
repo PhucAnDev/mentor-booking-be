@@ -24,6 +24,7 @@ namespace InfrastructureLayer.Database
                 try
                 {
                     DataSeeder.SeedAdminUser(dbContext).Wait();
+                    DataSeeder.SeedPastCompletedSession(dbContext).Wait();
                 }
                 catch (Exception ex)
                 {

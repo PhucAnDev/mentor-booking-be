@@ -139,11 +139,11 @@
           }
         }
       },
-      "Microsoft.Bcl.Memory/9.0.0": {
+      "Microsoft.Bcl.Memory/9.0.14": {
         "runtime": {
           "lib/net8.0/Microsoft.Bcl.Memory.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.52809"
+            "assemblyVersion": "9.0.0.14",
+            "fileVersion": "9.0.1426.11910"
           }
         }
       },
@@ -767,7 +767,7 @@
       },
       "Microsoft.IdentityModel.Tokens/8.5.0": {
         "dependencies": {
-          "Microsoft.Bcl.Memory": "9.0.0",
+          "Microsoft.Bcl.Memory": "9.0.14",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.2",
           "Microsoft.IdentityModel.Logging": "8.5.0"
         },
@@ -1205,7 +1205,8 @@
         "dependencies": {
           "AutoMapper": "14.0.0",
           "DomainLayer": "1.0.0",
-          "InfrastructureLayer": "1.0.0"
+          "InfrastructureLayer": "1.0.0",
+          "Microsoft.Bcl.Memory": "9.0.14"
         },
         "runtime": {
           "ApplicationLayer.dll": {
@@ -1338,12 +1339,12 @@
       "path": "microsoft.bcl.asyncinterfaces/7.0.0",
       "hashPath": "microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512"
     },
-    "Microsoft.Bcl.Memory/9.0.0": {
+    "Microsoft.Bcl.Memory/9.0.14": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bTUtGfpGyJnohQzjdXbtc7MqNzkv7CWUSRz54+ucNm0i32rZiIU0VdVPHDBShOl1qhVKRjW8mnEBz3d2vH93tQ==",
-      "path": "microsoft.bcl.memory/9.0.0",
-      "hashPath": "microsoft.bcl.memory.9.0.0.nupkg.sha512"
+      "sha512": "sha512-laQCcjTM2FnbyznkAu9hwBuQh3z2/OtJKwjGkJOUevylFpFXZIUVq/+MU2jM0HQm1n5wsjjwtLIDOiWJ6Nai3A==",
+      "path": "microsoft.bcl.memory/9.0.14",
+      "hashPath": "microsoft.bcl.memory.9.0.14.nupkg.sha512"
     },
     "Microsoft.Build.Framework/17.8.3": {
       "type": "package",

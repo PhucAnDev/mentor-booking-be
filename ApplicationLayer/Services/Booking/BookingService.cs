@@ -94,7 +94,7 @@ namespace ApplicationLayer.Services.Booking
                 BookingTitle = req.BookingTitle,
                 SkillGapDescription = req.SkillGapDescription,
                 SkillTag = req.SkillTag,
-                RequestedTime = DateTime.UtcNow.AddDays(2), // Mock requested time 2 days from now
+                RequestedTime = CalculateSlotDateTime(slot.DayOfWeek, slot.Time),
                 IsPriority = req.IsPriority,
                 Status = BookingStatusEnum.Pending
             };
@@ -268,6 +268,63 @@ namespace ApplicationLayer.Services.Booking
             }
 
             return SuccessResp.Ok(_mapper.Map<BookingDto>(booking));
+        }
+
+        private static DateTime CalculateSlotDateTime(string dayOfWeekStr, string timeRangeStr)
+        {
+            try
+            {
+                var now = DateTime.UtcNow;
+                TimeZoneInfo vietnamTimeZone;
+                try
+                {
+                    vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time");
+                }
+                catch (TimeZoneNotFoundException)
+                {
+                    vietnamTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Ho_Chi_Minh");
+                }
+                
+                var localNow = TimeZoneInfo.ConvertTimeFromUtc(now, vietnamTimeZone);
+
+                DayOfWeek targetDayOfWeek = DayOfWeek.Monday;
+                string cleanDay = dayOfWeekStr.Trim().ToLower();
+                if (cleanDay.Contains("2") || cleanDay.Contains("hai")) targetDayOfWeek = DayOfWeek.Monday;
+                else if (cleanDay.Contains("3") || cleanDay.Contains("ba")) targetDayOfWeek = DayOfWeek.Tuesday;
+                else if (cleanDay.Contains("4") || cleanDay.Contains("tư") || cleanDay.Contains("tu")) targetDayOfWeek = DayOfWeek.Wednesday;
+                else if (cleanDay.Contains("5") || cleanDay.Contains("năm") || cleanDay.Contains("nam")) targetDayOfWeek = DayOfWeek.Thursday;
+                else if (cleanDay.Contains("6") || cleanDay.Contains("sáu") || cleanDay.Contains("sau")) targetDayOfWeek = DayOfWeek.Friday;
+                else if (cleanDay.Contains("7") || cleanDay.Contains("bảy") || cleanDay.Contains("bay")) targetDayOfWeek = DayOfWeek.Saturday;
+                else if (cleanDay.Contains("nhật") || cleanDay.Contains("cn") || cleanDay.Contains("sunday")) targetDayOfWeek = DayOfWeek.Sunday;
+
+                int daysToAdd = ((int)targetDayOfWeek - (int)localNow.DayOfWeek + 7) % 7;
+                var targetDate = localNow.Date.AddDays(daysToAdd);
+
+                int hour = 9, minute = 0;
+                var parts = timeRangeStr.Split('-');
+                if (parts.Length > 0)
+                {
+                    var startPart = parts[0].Trim();
+                    var timeParts = startPart.Split(':');
+                    if (timeParts.Length >= 2)
+                    {
+                        hour = int.Parse(timeParts[0]);
+                        minute = int.Parse(timeParts[1]);
+                    }
+                }
+
+                var localSlotDateTime = new DateTime(targetDate.Year, targetDate.Month, targetDate.Day, hour, minute, 0, DateTimeKind.Unspecified);
+                if (daysToAdd == 0 && localSlotDateTime < localNow)
+                {
+                    localSlotDateTime = localSlotDateTime.AddDays(7);
+                }
+
+                return TimeZoneInfo.ConvertTimeToUtc(localSlotDateTime, vietnamTimeZone);
+            }
+            catch
+            {
+                return DateTime.UtcNow.AddDays(2);
+            }
         }
     }
 }

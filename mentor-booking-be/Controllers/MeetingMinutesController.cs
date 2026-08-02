@@ -32,6 +32,7 @@ namespace mentor_booking_be.Controllers
             return await _minutesService.SubmitMinutesByMentor(sessionId, req);
         }
 
+        [Protected]
         [HttpGet("session/{sessionId}")]
         public async Task<IActionResult> GetMinutesBySessionId(Guid sessionId)
         {

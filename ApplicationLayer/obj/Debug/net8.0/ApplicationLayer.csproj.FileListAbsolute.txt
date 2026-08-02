@@ -10,9 +10,9 @@ D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\Applicatio
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.AssemblyInfoInputs.cache
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.AssemblyInfo.cs
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.csproj.CoreCompileInputs.cache
+D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.sourcelink.json
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\Applicat.033E422A.Up2Date
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.dll
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\refint\ApplicationLayer.dll
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.pdb
 D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ref\ApplicationLayer.dll
-D:\do an\pick-det\mentor-booking-be\ApplicationLayer\obj\Debug\net8.0\ApplicationLayer.sourcelink.json

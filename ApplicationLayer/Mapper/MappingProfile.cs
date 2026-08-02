@@ -44,7 +44,11 @@ namespace ApplicationLayer.Mapper
                 .ForMember(dest => dest.StudentEmail, opt => opt.MapFrom(src => src.Student.User.Email))
                 .ForMember(dest => dest.StudentSchoolYear, opt => opt.MapFrom(src => src.Student.SchoolYear))
                 .ForMember(dest => dest.StudentUniversity, opt => opt.MapFrom(src => src.Student.University))
-                .ForMember(dest => dest.StudentCvUrl, opt => opt.MapFrom(src => src.Student.CvUrl));
+                .ForMember(dest => dest.StudentCvUrl, opt => opt.MapFrom(src => src.Student.CvUrl))
+                .ForMember(dest => dest.StudentMajor, opt => opt.MapFrom(src => src.Student.Major))
+                .ForMember(dest => dest.StartupName, opt => opt.MapFrom(src => src.Student.StartupName))
+                .ForMember(dest => dest.StartupStage, opt => opt.MapFrom(src => src.Student.StartupStage))
+                .ForMember(dest => dest.StartupDescription, opt => opt.MapFrom(src => src.Student.StartupDescription));
 
             // Sessions mapping
             CreateMap<Sessions, SessionDto>()

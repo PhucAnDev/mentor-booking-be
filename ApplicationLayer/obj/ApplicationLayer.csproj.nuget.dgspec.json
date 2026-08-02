@@ -60,6 +60,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[14.0.0, )"
+            },
+            "Microsoft.Bcl.Memory": {
+              "target": "Package",
+              "version": "[9.0.14, )"
             }
           },
           "imports": [

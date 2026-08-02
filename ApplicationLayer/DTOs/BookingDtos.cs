@@ -23,6 +23,10 @@ namespace ApplicationLayer.DTOs
         public int StudentSchoolYear { get; set; }
         public string? StudentUniversity { get; set; }
         public string? StudentCvUrl { get; set; }
+        public string? StudentMajor { get; set; }
+        public string? StartupName { get; set; }
+        public string? StartupStage { get; set; }
+        public string? StartupDescription { get; set; }
     }
 
     public class CreateBookingDto

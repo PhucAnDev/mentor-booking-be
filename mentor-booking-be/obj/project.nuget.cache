@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ETR6rLzJJoM=",
+  "dgSpecHash": "HmgmvL0qKQc=",
   "success": true,
   "projectFilePath": "D:\\do an\\pick-det\\mentor-booking-be\\mentor-booking-be\\ControllerLayer.csproj",
   "expectedPackageFiles": [
@@ -16,7 +16,7 @@
     "C:\\Users\\phuca\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.3.0\\microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\phuca\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.3.0\\microsoft.aspnetcore.http.features.2.3.0.nupkg.sha512",
     "C:\\Users\\phuca\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
-    "C:\\Users\\phuca\\.nuget\\packages\\microsoft.bcl.memory\\9.0.0\\microsoft.bcl.memory.9.0.0.nupkg.sha512",
+    "C:\\Users\\phuca\\.nuget\\packages\\microsoft.bcl.memory\\9.0.14\\microsoft.bcl.memory.9.0.14.nupkg.sha512",
     "C:\\Users\\phuca\\.nuget\\packages\\microsoft.build.framework\\17.8.3\\microsoft.build.framework.17.8.3.nupkg.sha512",
     "C:\\Users\\phuca\\.nuget\\packages\\microsoft.build.locator\\1.7.8\\microsoft.build.locator.1.7.8.nupkg.sha512",
     "C:\\Users\\phuca\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.4\\microsoft.codeanalysis.analyzers.3.3.4.nupkg.sha512",
