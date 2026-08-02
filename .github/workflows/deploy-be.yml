@@ -86,7 +86,10 @@ jobs:
             --image ${{ env.IMAGE }}:${{ github.sha }} \
             --set-env-vars \
               "ConnectionStrings__DefaultConnection=${{ secrets.DB_CONNECTION_STRING }}" \
-              "Jwt__Secret=${{ secrets.JWT_SECRET }}"
+              "ConnectionStrings__RedisConnection=${{ secrets.REDIS_CONNECTION_STRING }}" \
+              "Jwt__Secret=${{ secrets.JWT_SECRET }}" \
+              "SMTPEmail=${{ secrets.SMTP_EMAIL }}" \
+              "SMTPPassword=${{ secrets.SMTP_PASSWORD }}"
 
           LATEST_REV=$(az containerapp show -n ${{ env.CONTAINER_APP_NAME }} -g ${{ env.RESOURCE_GROUP }} --query "properties.latestRevisionName" -o tsv)
           PREVIOUS_REV=$(az containerapp revision list -n ${{ env.CONTAINER_APP_NAME }} -g ${{ env.RESOURCE_GROUP }} --query "[?properties.active==\`true\` && name!='$LATEST_REV'] | [0].name" -o tsv)

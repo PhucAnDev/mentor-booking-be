@@ -77,14 +77,27 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 // Generic Repository
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-// Redis multiplexer
+// Redis multiplexer (optional — app continues without cache if Redis is unavailable)
 var redisConn = builder.Configuration.GetConnectionString("RedisConnection") ?? "localhost:6379";
-builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConn));
+try
+{
+    var redisOptions = ConfigurationOptions.Parse(redisConn);
+    redisOptions.ConnectTimeout = 3000;
+    redisOptions.AbortOnConnectFail = false;
+    builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisOptions));
+    builder.Services.AddScoped<ICacheService, CacheService>();
+    Console.WriteLine("Redis connected successfully.");
+}
+catch (Exception redisEx)
+{
+    Console.WriteLine($"[WARN] Redis unavailable ({redisConn}): {redisEx.Message}. Running without cache.");
+    // Register a no-op / null cache service so DI still resolves ICacheService
+    builder.Services.AddScoped<ICacheService, NullCacheService>();
+}
 
 // CORE Services
 builder.Services.AddSingleton<IJwtService, JwtService>();
 builder.Services.AddSingleton<ICryptoService, CryptoService>();
-builder.Services.AddScoped<ICacheService, CacheService>();
 
 var smtpUsername = builder.Configuration.GetValue<string>("SMTPEmail") ?? "smtp_email";
 var smtpPassword = builder.Configuration.GetValue<string>("SMTPPassword") ?? "smtp_password";
